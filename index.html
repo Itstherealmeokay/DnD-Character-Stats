@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D 5e Character Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="character-header">
+            <h1>D&D 5th Edition Character Sheet</h1>
+        </header>
+
+        <!-- Basic Information -->
+        <section class="basic-info">
+            <div class="info-row">
+                <div class="field">
+                    <label>Character Name</label>
+                    <input type="text" id="characterName" placeholder="Enter name">
+                </div>
+                <div class="field">
+                    <label>Class & Level</label>
+                    <input type="text" id="class" placeholder="e.g., Fighter">
+                </div>
+                <div class="field small">
+                    <label>Level</label>
+                    <input type="number" id="level" value="1" min="1" max="20">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="field">
+                    <label>Race</label>
+                    <input type="text" id="race" placeholder="e.g., Human">
+                </div>
+                <div class="field">
+                    <label>Background</label>
+                    <input type="text" id="background" placeholder="e.g., Soldier">
+                </div>
+                <div class="field">
+                    <label>Alignment</label>
+                    <input type="text" id="alignment" placeholder="e.g., Lawful Good">
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="field small">
+                    <label>Experience Points</label>
+                    <input type="number" id="xp" value="0" min="0">
+                </div>
+                <div class="field small">
+                    <label>Proficiency Bonus</label>
+                    <input type="text" id="proficiencyBonus" value="+2" readonly>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Stats Area -->
+        <div class="main-content">
+            <!-- Left Column: Ability Scores -->
+            <aside class="abilities-section">
+                <h2>Ability Scores</h2>
+                <div class="ability" data-ability="strength">
+                    <div class="ability-name">Strength</div>
+                    <div class="ability-modifier" id="strModifier">+0</div>
+                    <input type="number" class="ability-score" id="strength" value="10" min="1" max="30">
+                </div>
+                <div class="ability" data-ability="dexterity">
+                    <div class="ability-name">Dexterity</div>
+                    <div class="ability-modifier" id="dexModifier">+0</div>
+                    <input type="number" class="ability-score" id="dexterity" value="10" min="1" max="30">
+                </div>
+                <div class="ability" data-ability="constitution">
+                    <div class="ability-name">Constitution</div>
+                    <div class="ability-modifier" id="conModifier">+0</div>
+                    <input type="number" class="ability-score" id="constitution" value="10" min="1" max="30">
+                </div>
+                <div class="ability" data-ability="intelligence">
+                    <div class="ability-name">Intelligence</div>
+                    <div class="ability-modifier" id="intModifier">+0</div>
+                    <input type="number" class="ability-score" id="intelligence" value="10" min="1" max="30">
+                </div>
+                <div class="ability" data-ability="wisdom">
+                    <div class="ability-name">Wisdom</div>
+                    <div class="ability-modifier" id="wisModifier">+0</div>
+                    <input type="number" class="ability-score" id="wisdom" value="10" min="1" max="30">
+                </div>
+                <div class="ability" data-ability="charisma">
+                    <div class="ability-name">Charisma</div>
+                    <div class="ability-modifier" id="chaModifier">+0</div>
+                    <input type="number" class="ability-score" id="charisma" value="10" min="1" max="30">
+                </div>
+
+                <!-- Saving Throws -->
+                <div class="saves-section">
+                    <h3>Saving Throws</h3>
+                    <div class="save-item">
+                        <input type="checkbox" id="strSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="strSave">+0</span>
+                        <label for="strSaveProf">Strength</label>
+                    </div>
+                    <div class="save-item">
+                        <input type="checkbox" id="dexSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="dexSave">+0</span>
+                        <label for="dexSaveProf">Dexterity</label>
+                    </div>
+                    <div class="save-item">
+                        <input type="checkbox" id="conSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="conSave">+0</span>
+                        <label for="conSaveProf">Constitution</label>
+                    </div>
+                    <div class="save-item">
+                        <input type="checkbox" id="intSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="intSave">+0</span>
+                        <label for="intSaveProf">Intelligence</label>
+                    </div>
+                    <div class="save-item">
+                        <input type="checkbox" id="wisSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="wisSave">+0</span>
+                        <label for="wisSaveProf">Wisdom</label>
+                    </div>
+                    <div class="save-item">
+                        <input type="checkbox" id="chaSaveProf" class="prof-checkbox">
+                        <span class="save-bonus" id="chaSave">+0</span>
+                        <label for="chaSaveProf">Charisma</label>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="skills-section">
+                    <h3>Skills</h3>
+                    <div class="skill-item">
+                        <input type="checkbox" id="acrobaticsProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="acrobatics">+0</span>
+                        <label for="acrobaticsProf">Acrobatics (Dex)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="animalHandlingProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="animalHandling">+0</span>
+                        <label for="animalHandlingProf">Animal Handling (Wis)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="arcanaProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="arcana">+0</span>
+                        <label for="arcanaProf">Arcana (Int)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="athleticsProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="athletics">+0</span>
+                        <label for="athleticsProf">Athletics (Str)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="deceptionProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="deception">+0</span>
+                        <label for="deceptionProf">Deception (Cha)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="historyProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="history">+0</span>
+                        <label for="historyProf">History (Int)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="insightProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="insight">+0</span>
+                        <label for="insightProf">Insight (Wis)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="intimidationProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="intimidation">+0</span>
+                        <label for="intimidationProf">Intimidation (Cha)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="investigationProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="investigation">+0</span>
+                        <label for="investigationProf">Investigation (Int)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="medicineProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="medicine">+0</span>
+                        <label for="medicineProf">Medicine (Wis)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="natureProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="nature">+0</span>
+                        <label for="natureProf">Nature (Int)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="perceptionProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="perception">+0</span>
+                        <label for="perceptionProf">Perception (Wis)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="performanceProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="performance">+0</span>
+                        <label for="performanceProf">Performance (Cha)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="persuasionProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="persuasion">+0</span>
+                        <label for="persuasionProf">Persuasion (Cha)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="religionProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="religion">+0</span>
+                        <label for="religionProf">Religion (Int)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="sleightOfHandProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="sleightOfHand">+0</span>
+                        <label for="sleightOfHandProf">Sleight of Hand (Dex)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="stealthProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="stealth">+0</span>
+                        <label for="stealthProf">Stealth (Dex)</label>
+                    </div>
+                    <div class="skill-item">
+                        <input type="checkbox" id="survivalProf" class="prof-checkbox">
+                        <span class="skill-bonus" id="survival">+0</span>
+                        <label for="survivalProf">Survival (Wis)</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Column: Combat Stats -->
+            <main class="combat-section">
+                <div class="combat-stats">
+                    <div class="stat-box">
+                        <label>Armor Class</label>
+                        <div class="stat-value large" id="armorClass">10</div>
+                        <input type="number" id="acBase" value="10" min="0" placeholder="Base AC">
+                    </div>
+                    <div class="stat-box">
+                        <label>Initiative</label>
+                        <div class="stat-value large" id="initiative">+0</div>
+                    </div>
+                    <div class="stat-box">
+                        <label>Speed</label>
+                        <input type="number" id="speed" value="30" min="0">
+                        <span>ft</span>
+                    </div>
+                </div>
+
+                <!-- Hit Points -->
+                <div class="hp-section">
+                    <h3>Hit Points</h3>
+                    <div class="hp-row">
+                        <div class="hp-box">
+                            <label>Max HP</label>
+                            <input type="number" id="maxHP" value="10" min="1">
+                        </div>
+                        <div class="hp-box">
+                            <label>Current HP</label>
+                            <input type="number" id="currentHP" value="10" min="0">
+                        </div>
+                        <div class="hp-box">
+                            <label>Temp HP</label>
+                            <input type="number" id="tempHP" value="0" min="0">
+                        </div>
+                    </div>
+                    <div class="hp-row">
+                        <div class="hp-box">
+                            <label>Hit Dice</label>
+                            <input type="text" id="hitDice" placeholder="e.g., 1d8">
+                        </div>
+                        <div class="hp-box">
+                            <label>Death Saves</label>
+                            <div class="death-saves">
+                                <div>Successes: 
+                                    <input type="checkbox" class="death-save-check">
+                                    <input type="checkbox" class="death-save-check">
+                                    <input type="checkbox" class="death-save-check">
+                                </div>
+                                <div>Failures: 
+                                    <input type="checkbox" class="death-save-check">
+                                    <input type="checkbox" class="death-save-check">
+                                    <input type="checkbox" class="death-save-check">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attacks & Spells -->
+                <div class="attacks-section">
+                    <h3>Attacks & Spellcasting</h3>
+                    <textarea id="attacks" rows="6" placeholder="List your attacks and spells here..."></textarea>
+                </div>
+
+                <!-- Equipment -->
+                <div class="equipment-section">
+                    <h3>Equipment</h3>
+                    <div class="currency-row">
+                        <div class="currency">
+                            <label>CP</label>
+                            <input type="number" id="cp" value="0" min="0">
+                        </div>
+                        <div class="currency">
+                            <label>SP</label>
+                            <input type="number" id="sp" value="0" min="0">
+                        </div>
+                        <div class="currency">
+                            <label>EP</label>
+                            <input type="number" id="ep" value="0" min="0">
+                        </div>
+                        <div class="currency">
+                            <label>GP</label>
+                            <input type="number" id="gp" value="0" min="0">
+                        </div>
+                        <div class="currency">
+                            <label>PP</label>
+                            <input type="number" id="pp" value="0" min="0">
+                        </div>
+                    </div>
+                    <textarea id="equipment" rows="6" placeholder="List your equipment here..."></textarea>
+                </div>
+
+                <!-- Spell Slots -->
+                <div class="spells-section">
+                    <h3>Spellcasting</h3>
+                    <div class="spell-levels-grid">
+                        <!-- Cantrips -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">Cantrips</span>
+                                <span class="spell-counter" id="cantrips-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="cantrips-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="cantrips">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="cantrips">+ Add Spell</button>
+                        </div>
+
+                        <!-- 1st Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">1st Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-1-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-1-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-1-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-1">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-1">+ Add Spell</button>
+                        </div>
+
+                        <!-- 2nd Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">2nd Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-2-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-2-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-2-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-2">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-2">+ Add Spell</button>
+                        </div>
+
+                        <!-- 3rd Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">3rd Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-3-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-3-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-3-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-3">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-3">+ Add Spell</button>
+                        </div>
+
+                        <!-- 4th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">4th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-4-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-4-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-4-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-4">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-4">+ Add Spell</button>
+                        </div>
+
+                        <!-- 5th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">5th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-5-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-5-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-5-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-5">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-5">+ Add Spell</button>
+                        </div>
+
+                        <!-- 6th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">6th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-6-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-6-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-6-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-6">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-6">+ Add Spell</button>
+                        </div>
+
+                        <!-- 7th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">7th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-7-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-7-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-7-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-7">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-7">+ Add Spell</button>
+                        </div>
+
+                        <!-- 8th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">8th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-8-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-8-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-8-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-8">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-8">+ Add Spell</button>
+                        </div>
+
+                        <!-- 9th Level -->
+                        <div class="spell-level-box">
+                            <div class="spell-level-header">
+                                <span class="spell-level-name">9th Level</span>
+                                <span class="spell-slots-info">
+                                    <input type="number" class="slots-total" id="slots-9-total" value="0" min="0" max="20" placeholder="0">
+                                    <span>Slots</span>
+                                </span>
+                                <span class="spell-counter" id="level-9-counter">0</span>
+                            </div>
+                            <div class="spell-list" id="level-9-list">
+                                <div class="spell-item">
+                                    <input type="checkbox" class="spell-checkbox" data-level="level-9">
+                                    <input type="text" class="spell-name" placeholder="Spell name">
+                                </div>
+                            </div>
+                            <button class="add-spell-btn" data-level="level-9">+ Add Spell</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Column: Features & Traits -->
+            <aside class="features-section">
+                <div class="personality-section">
+                    <h3>Personality Traits</h3>
+                    <textarea id="personalityTraits" rows="3" placeholder="Character traits..."></textarea>
+                </div>
+                <div class="personality-section">
+                    <h3>Ideals</h3>
+                    <textarea id="ideals" rows="3" placeholder="Character ideals..."></textarea>
+                </div>
+                <div class="personality-section">
+                    <h3>Bonds</h3>
+                    <textarea id="bonds" rows="3" placeholder="Character bonds..."></textarea>
+                </div>
+                <div class="personality-section">
+                    <h3>Flaws</h3>
+                    <textarea id="flaws" rows="3" placeholder="Character flaws..."></textarea>
+                </div>
+                <div class="features-list">
+                    <h3>Features & Traits</h3>
+                    <textarea id="features" rows="10" placeholder="List class features, racial traits, feats, etc..."></textarea>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Save/Load Controls -->
+        <div class="controls">
+            <button id="saveCharacter" class="btn">Save Character</button>
+            <button id="loadCharacter" class="btn">Load Character</button>
+            <button id="resetCharacter" class="btn btn-secondary">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
